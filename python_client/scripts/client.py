@@ -27,16 +27,21 @@ class echoClient():
     def send(self, message):
         self.connect() #make sure it is connected, so connect is no required to be used before
         try:
-            self.client.sendall(message.encode('utf-8')) #from typer i ensure that message is string
+            encode_message = message.encode('utf-8')+ b"\n"
+            #print(encode_message)
+            self.client.sendall(encode_message) #from typer i ensure that message is string
         except socket.error as e: 
             print ("Error sending data to server: %s" % e) 
             sys.exit(1)
     
     def waitForEcho(self):
         try:
-            data = self.client.makefile("rb")
-            return str(data).strip() #delete end of lines codes
-
+            echo = self.client.makefile("rb")
+            for f in echo.readlines():
+                if f != b'\n':
+                    clean_data = f.decode("utf-8").strip()  #conver byte to string and clean '\n'
+            
+            return clean_data
         except socket.error as e: 
             print ("Error receiving data from server: %s" % e) 
             sys.exit(1)
