@@ -64,9 +64,5 @@ the server will run and will wait for connections
 
 This server run just for una message. todo: create a keepalive connection (it is really easy)
 
-## Unit Testing
-
-I have no experience with testing, so I recognize that as a weakness and an opportunity to improve. 
-I did not complete that requirement.
 
 
