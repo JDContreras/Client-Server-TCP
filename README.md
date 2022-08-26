@@ -1,5 +1,5 @@
 Juan David Contreras
-# TCP - CLient / Server Communication
+# TCP - Client / Server Communication
 
 Python Client / Server Application
 
